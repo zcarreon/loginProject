@@ -7,10 +7,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="css/main.css" rel="stylesheet">
 <title>CMS Portal Login</title>
 </head>
 <body>
-  <h1>Welcome Company Name to your admin page.</h1>
+  <h1>Welcome to the admin page.</h1>
   <?php
     echo "<h2>Hello, {$_SESSION['user_name']}</h2>";
   ?>

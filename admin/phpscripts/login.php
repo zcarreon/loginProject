@@ -1,5 +1,5 @@
 <?php
-  function logIn($username, $password, $ip) {
+  function logIn($username, $password, $ip, $failedLogin) {
     require_once('connect.php');
     $username = mysqli_real_escape_string($link, $username);
     $password = mysqli_real_escape_string($link, $password);
@@ -10,17 +10,23 @@
       $id = $found_user['user_id'];
       $_SESSION['user_id'] = $id; //Side note : When sending data around, DO NOT USE COOKIES. Use Sessions, but do not abuse them.
       $_SESSION['user_name'] = $found_user['user_fname'];
-      $_SESSION['user_date'] = $found_user['user_date'];
-      date_default_timezone_set('America/Toronto');
-      $currentDate = date("Y-m-d h:i:s");
+      $_SESSION['user_date'] = $found_user['user_date']; //Grabs the date from the database
+      date_default_timezone_set('America/Toronto'); //Sets the timezone to Toronto
+      $currentDate = date("Y-m-d h:i:s"); //Records the current date and time
       if(mysqli_query($link, $loginstring)){
-        $updatestring = "UPDATE tbl_user SET user_ip = '$ip', user_date = '$currentDate' WHERE user_id = {$id};";
+        $updatestring = "UPDATE tbl_user SET user_ip = '$ip', user_date = '$currentDate' WHERE user_id = {$id};"; //updates the date in the database.
         $updatequery = mysqli_query($link, $updatestring);
       }
       redirect_to("admin_index.php");
     }else{
-      $message = "Username and/or password is incorrect.<br>Please make sure your capslock key is turned off.";
-      return $message;
+      ++$failedLogin;
+      if($failedLogin = 3){
+        $message = "You have failed the to login too many times, please try again later.";
+        return $message;
+      }else{
+        $message = "Username and/or password is incorrect.<br>Please make sure your capslock key is turned off.";
+        return $message;
+      }
     }
     mysqli_close($link);
   }

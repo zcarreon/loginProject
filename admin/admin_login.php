@@ -6,11 +6,12 @@
 
   $ip = $_SERVER['REMOTE_ADDR']; //Gets the IP Address
   //echo $ip;
+  $failedLogin = 0;
   if(isset($_POST['submit'])) {
     $username = trim($_POST['username']); //trim removes spaces at the beginning and end
     $password = trim($_POST['password']);
     if($username !== "" && $password !== "") {
-      $result = logIn($username, $password, $ip);
+      $result = logIn($username, $password, $ip, $failedLogin);
       $message = $result;
     }else{
       $message = "Please fill in the required fields.";

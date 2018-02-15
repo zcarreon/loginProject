@@ -10,8 +10,11 @@
       $id = $found_user['user_id'];
       $_SESSION['user_id'] = $id; //Side note : When sending data around, DO NOT USE COOKIES. Use Sessions, but do not abuse them.
       $_SESSION['user_name'] = $found_user['user_fname'];
+      $_SESSION['user_date'] = $found_user['user_date'];
+      date_default_timezone_set('America/Toronto');
+      $currentDate = date("Y-m-d h:i:s");
       if(mysqli_query($link, $loginstring)){
-        $updatestring = "UPDATE tbl_user SET user_ip = '$ip' WHERE user_id = {$id}";
+        $updatestring = "UPDATE tbl_user SET user_ip = '$ip', user_date = '$currentDate' WHERE user_id = {$id};";
         $updatequery = mysqli_query($link, $updatestring);
       }
       redirect_to("admin_index.php");

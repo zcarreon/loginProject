@@ -32,11 +32,11 @@
   ?>
   <form action="admin_login.php" method="post">
     <label></label>
-    <input type="text" name="username" value="">
+    <input type="text" name="username" value="Username">
     <label></label>
-    <input type="text" name="password" value="">
+    <input type="text" name="password" value="Password">
     <br>
-    <input type="submit" name="submit" value="Show me the money.">
+    <input type="submit" name="submit" value="Login">
   </form>
 </body>
 </html>

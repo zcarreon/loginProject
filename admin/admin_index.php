@@ -14,6 +14,7 @@
   <h1>Welcome to the admin page.</h1>
   <?php
     echo "<h2>Hello, {$_SESSION['user_name']}</h2>";
+    echo "<h2>Last login was on {$_SESSION['user_date']}</h2>";
   ?>
 </body>
 </html>

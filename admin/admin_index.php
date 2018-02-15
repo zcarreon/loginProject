@@ -7,12 +7,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="css/main.css" rel="stylesheet">
 <title>CMS Portal Login</title>
 </head>
 <body>
-  <h1>Welcome Company Name to your admin page.</h1>
+  <h1>Welcome to the admin page.</h1>
   <?php
-    echo "<h2>Hello, {$_SESSION['user_name']}</h2>";
+    date_default_timezone_set('America/Toronto');
+    $time = date("H");
+    if($time < "12"){
+      echo "<h2>Good Morning, {$_SESSION['user_name']}</h2>";
+    }elseif($time < "18"){
+      echo "<h2>Good Afternoon, {$_SESSION['user_name']}</h2>";
+    }else{
+      echo "<h2>Good Evening, {$_SESSION['user_name']}</h2>";
+    }
+    echo "<h3>Last login was on {$_SESSION['user_date']}</h3>";
   ?>
 </body>
 </html>

@@ -22,6 +22,9 @@
       if($failedLogin >= 3){
         $message = "<h3>You have failed too many attempts to login. Please try again later.</h3>";
         return $message;
+        //This is as far as I got with the Account Lockout feature. What I was trying to do is when $failedLogin hit 3,
+        //the form would prevent the user from submiting anymore logins. After 3 minutes or so, $failedLogin would be
+        // reset back to 0 so the user could try again. However, I was unable to find the code that would allow me to do so.
       }else{
         ++$failedLogin;
         $message = "<h3>Username and/or password is incorrect.<br>Please make sure your capslock key is turned off.</h3>";

@@ -22,7 +22,7 @@
     }else{
       echo "<h2>Good Evening, {$_SESSION['user_name']}</h2>";
     }
-    echo "<h2>Last login was on {$_SESSION['user_date']}</h2>";
+    echo "<h3>Last login was on {$_SESSION['user_date']}</h3>";
   ?>
 </body>
 </html>

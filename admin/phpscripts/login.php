@@ -19,12 +19,12 @@
       }
       redirect_to("admin_index.php");
     }else{
-      ++$failedLogin;
-      if($failedLogin = 3){
-        $message = "You have failed the to login too many times, please try again later.";
+      if($failedLogin >= 3){
+        $message = "<h3>You have failed too many attempts to login. Please try again later.</h3>";
         return $message;
       }else{
-        $message = "Username and/or password is incorrect.<br>Please make sure your capslock key is turned off.";
+        ++$failedLogin;
+        $message = "<h3>Username and/or password is incorrect.<br>Please make sure your capslock key is turned off.</h3>";
         return $message;
       }
     }

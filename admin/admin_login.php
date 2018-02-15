@@ -14,7 +14,7 @@
       $result = logIn($username, $password, $ip, $failedLogin);
       $message = $result;
     }else{
-      $message = "Please fill in the required fields.";
+      $message = "<h3>Please fill in the required fields.</h3>";
     }
   }
 ?>
@@ -23,19 +23,18 @@
 <head>
 <meta charset="UTF-8">
 <title>CMS Portal Login</title>
+<link href="css/main.css" rel="stylesheet">
 </head>
 <body>
-  <h1>Welcome Company Name</h1>
+  <h1>Welcome, Admin</h1>
   <?php
     if(!empty($message)){
       echo $message;
     }
   ?>
   <form action="admin_login.php" method="post">
-    <label></label>
-    <input type="text" name="username" value="Username">
-    <label></label>
-    <input type="text" name="password" value="Password">
+    <input type="text" name="username" value="" placeholder="Username">
+    <input type="text" name="password" value="" placeholder="Password">
     <br>
     <input type="submit" name="submit" value="Login">
   </form>
